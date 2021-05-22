@@ -4,20 +4,21 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
+  console.log(3333333333333)
   const emailValue = req.body.email;
   const password = req.body.password;
   console.log(emailValue)
 
   try {
     const getUser = await seller.find({ email: emailValue });
-    if (getUser.length === 0) {
+    if (!getUser) {
       res.send("Invalid email");
     }
 
     const passwordCheck = bcrypt.compareSync(password, getUser[0].password);
     if (passwordCheck) {
       const token = jwt.sign(
-        { _id: getUser[0]._id, email: getUser[0].email, role: 0 },
+        { _id: getUser[0]._id, email: getUser[0].email },
         process.env.TOKENSCRET,
         { expiresIn: "24h" }
       );
