@@ -196,26 +196,7 @@ const Profile = (props) => {
                     >
                       {islLoggedIn.status === "seller" ? (
                         <>
-                          <li class="nav-item">
-                            <a
-                              class="nav-link active bg-success"
-                              href="#studio"
-                              role="tab"
-                              data-toggle="tab"
-                            >
-                              <i class="material-icons">camera</i> Items
-                            </a>
-                          </li>
-                          <li class="nav-item">
-                            <a
-                              class="nav-link"
-                              href="#works"
-                              role="tab"
-                              data-toggle="tab"
-                            >
-                              <i class="material-icons">palette</i> Orders
-                            </a>
-                          </li>
+                          
                         </>
                       ) : null}
                       {islLoggedIn.status === "buyer" ? (
@@ -239,7 +220,7 @@ const Profile = (props) => {
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 {islLoggedIn.status === "seller" ? (
                   <Link to="/addproduct">
-                    <button class="btn btn-outline-success" style={{ padding: 10 }}>
+                    <button class="btn btn-danger" style={{ padding: 10 }}>
                       Add New Product
                     </button>
                   </Link>

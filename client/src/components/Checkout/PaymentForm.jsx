@@ -79,7 +79,6 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
   };
 
   const buy = () => {
-    return;
     let nonce;
     let getNonse = data.instance
       .requestPaymentMethod()
@@ -100,7 +99,7 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
               .then((res) => {
                 setLoading(false);
                 alert.success("Payment Success");
-                history.push("/");
+                history.push("/delivery");
                 setCartData([]);
                 //nextStep()
 

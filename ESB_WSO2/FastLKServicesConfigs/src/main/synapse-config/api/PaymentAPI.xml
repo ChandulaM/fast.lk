@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/api/payment" name="PaymentAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="DELETE POST PUT GET">
+        <inSequence>
+            <log description="log">
+                <property name="message" value="welcome to payment service"/>
+            </log>
+            <send>
+                <endpoint key="PaymentService"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

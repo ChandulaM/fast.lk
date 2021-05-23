@@ -28,20 +28,20 @@ const SellerItemData = ({ sellerProducts, deleteItem, history }) => {
             <td>{product.quantity}</td>
             <td>{product.price}</td>
             <td>
-              <button class="btn btn-outline-success" style={{ padding: 10 }}>
+              <button class="btn" style={{ padding: 10 }}>
                 Edit Images
               </button>
             </td>
             <td style={{ display: "flex" }}>
               <button
-                class="btn btn-outline-success"
+                class="btn"
                 style={{ padding: 10 }}
                 onClick={() => saveDataTemp(product)}
               >
                 Update
               </button>
               <button
-                class="btn btn-outline-danger"
+                class="btn btn-danger"
                 style={{ padding: 10, marginLeft: 10 }}
                 onClick={deleteItem}
                 id={product._id}

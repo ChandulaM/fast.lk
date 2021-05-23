@@ -62,6 +62,7 @@ const AddressForm = ({ next, cart_data }) => {
         alert.error(err);
       });
     } else {
+      localStorage.setItem("deliverAddress", data.address);
       next({ ...data });
     }
   };
