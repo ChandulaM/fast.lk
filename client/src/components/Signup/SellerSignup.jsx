@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import * as EmailValidator from "email-validator";
 import { storageRef2 } from "./../../firebase";
 import Loader from "react-loader-spinner";
+import { useAlert } from "react-alert";
 import axios from "axios";
 import "./../../App.css";
 
-const SellerSignup = () => {
+const SellerSignup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
@@ -17,6 +18,8 @@ const SellerSignup = () => {
   const [city, setCity] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const alert = useAlert();
+
   const handleSignUp = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -27,10 +30,11 @@ const SellerSignup = () => {
         const url = await uploadImage();
         const posted = await postSellerData(url);
 
-        alert("succesfully added the user");
+        alert.success("succesfully added the user");
         setIsLoading(false);
+        props.history.push("/slogin");
       } catch (err) {
-        alert("soemthing went wrong");
+        alert.success("soemthing went wrong");
         setIsLoading(false);
       }
     } else {
@@ -194,7 +198,6 @@ const SellerSignup = () => {
     ) {
       if (e.target.files[0]) {
         setImage(e.target.files[0]);
-        console.log(e.target.files[0].type);
       }
     } else {
       const imageErrorLabel = document.getElementById("signupimageerror");

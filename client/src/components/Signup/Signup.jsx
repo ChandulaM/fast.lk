@@ -3,10 +3,11 @@ import * as EmailValidator from "email-validator";
 import { storageRef2 } from "./../../firebase";
 import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
+import { useAlert } from "react-alert";
 import axios from "axios";
 import "./../../App.css";
 
-const Signup = () => {
+const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
@@ -18,6 +19,8 @@ const Signup = () => {
   const [city, setCity] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const alert = useAlert();
+
   const handleSignUp = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -28,10 +31,11 @@ const Signup = () => {
         const url = await uploadImage();
         const posted = await postBuyerData(url);
 
-        alert("succesfully added the user");
+        alert.success("succesfully added the user");
         setIsLoading(false);
+        props.history.push("/login");
       } catch (err) {
-        alert("soemthing went wrong");
+        alert.success("soemthing went wrong");
         setIsLoading(false);
       }
     } else {
